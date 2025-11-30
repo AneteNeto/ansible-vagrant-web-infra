@@ -1,0 +1,15 @@
+upstream backend_servers {
+    server 192.168.56.51;
+    server 192.168.56.52;
+}
+
+server {
+    listen 80;
+    server_name _;
+
+    location / {
+        proxy_pass http://backend_servers;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}

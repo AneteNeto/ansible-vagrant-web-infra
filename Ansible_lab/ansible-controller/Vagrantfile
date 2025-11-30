@@ -1,20 +1,17 @@
 Vagrant.configure("2") do |config|
 
-  # Définir la machine comme contrôleur Ansible
   config.vm.define "ansible-controller" do |controller|
     controller.vm.hostname = "controller"
   end
 
-  # Spécifier le système d'\exploitation  
   config.vm.box = "generic/debian12"
 
-  # Provisionner la machine avec Ansible
-  config.vm.provision "shell", inline:<<-SHELL
-
-    # Mettre à jour la liste des packages et installer Ansible
+  # Provision the machine with Ansible installation
+  config.vm.provision "shell", inline: <<-SHELL
     sudo apt-get update
     sudo apt-get install -y software-properties-common
-    apt-add-repository --yes --update ppa:ansible/ansible
+    sudo apt-add-repository --yes --update ppa:ansible/ansible
     sudo apt-get install -y ansible
-    SHELL
+  SHELL
+
 end

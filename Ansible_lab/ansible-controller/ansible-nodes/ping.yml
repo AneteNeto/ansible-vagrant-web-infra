@@ -1,0 +1,7 @@
+- name: Test Managed nodes
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: ping Ansible
+      ansible.builtin.ping:
