@@ -1,0 +1,20 @@
+
+Vagrant.configure("2") do |config|
+  # boxes at https://vagrantcloud.com/search.
+  servers = [
+    {hostname:"load-balancer", box:"bento/debian-11", ip:"192.168.56.50", ssh_port: 2200},
+    {hostname:"web-svr1", box:"bento/debian-11", ip:"192.168.56.51", ssh_port: 2201},
+    {hostname:"web-svr2", box:"bento/debian-11", ip:"192.168.56.52", ssh_port: 2202},
+
+  ]
+
+  servers.each do |machine|
+    config.vm.define machine[:hostname] do |node|
+      node.vm.box= machine[:box]
+      node.vm.hostname = machine[:hostname]
+      node.vm.network :private_network, ip: machine[:ip]
+      node.vm.network "forwarded_port", guest:22, host: machine[:ssh_port], id:"ssh"
+    end
+  end
+
+end
