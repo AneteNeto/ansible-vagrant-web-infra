@@ -2,6 +2,7 @@
 <p align="center">
   <img src="images/ansible_web_infra.png" width="700" height="400">
 </p>
+
 # Automated Web Infrastructure (Ansible + Vagrant + Nginx)
 
 This project deploys a fully automated web infrastructure using **Ansible**, **Vagrant**, and **Nginx**.  
@@ -26,12 +27,3 @@ Two Vagrantfiles were created:
 
 - one for the **Ansible Controller**
 - one for the **Load Balancer + Web Servers**
-
-### 📸 Controller Vagrantfile
-
-![Vagrantfile Controller](images/vagrantfile_controller.png)
-
-### 📸 Hosts Vagrantfile
-
-![Vagrantfile Hosts](images/vagrantfile_hosts.png)
-
